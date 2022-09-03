@@ -5,7 +5,11 @@ function getPokemon(pokemon) {
     }
 
 
-
+    function pokeCard() {
+        let list =  document.getElementById('btn')
+        list.addEventListener('click', pokeCard())
+     }
+     console.log(pokeCard())
 
 
 
