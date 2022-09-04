@@ -1,15 +1,21 @@
 function getPokemon(pokemon) {
     fetch('https://pokeapi.co/api/v2/pokemon?offset=1&limit=150')
     .then(res => res.json())
-    .then(data => data.pokeCard())
+    .then(data => data)
     }
-
+    getPokemon()
 
     function pokeCard() {
-        let list =  document.getElementById('btn')
-        list.addEventListener('click', pokeCard())
-     }
-     console.log(pokeCard())
+        const list =  document.querySelector('#btn')
+        console.log(list)
+        addEventListener('click', (e) => {
+            getPokemon()
+            
+           
+     })
+    }
+    pokeCard()
+    
 
 
 
@@ -33,9 +39,5 @@ function getPokemon(pokemon) {
     // document.querySelector('#user-list').appendChild(p1) 
     // p.addEventListener('click', (e) => {
     //     fetchRepo(searchUser)
-        
-
-    // })
-
     
-// }
+   // } 
