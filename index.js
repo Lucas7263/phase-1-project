@@ -7,9 +7,9 @@ function getPokemon(pokemon) {
 
     function pokeCard() {
         const list =  document.querySelector('#btn')
-        console.log(list)
-        addEventListener('click', (e) => {
-            getPokemon()
+        
+        list.addEventListener('click', (e) => {
+            console.log('button works')
             
            
      })
