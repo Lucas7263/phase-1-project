@@ -1,22 +1,50 @@
-function getPokemon(pokemon) {
-    fetch('https://pokeapi.co/api/v2/pokemon?offset=1&limit=150')
+function getPokemon(ranNum) {
+    let pokeData = document.createElement('p')
+    
+    fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`)
     .then(res => res.json())
-    .then(data => data)
+    // want data that is pulled to select 6 or 12 random pokemon for players to choose from
+    //.then(data => console.log(data))
+    .then(data => { 
+        //console.log(ranNum = Math.floor(Math.random(data) * 151))
+       console.log(data)
+       
+    })
+    
+    .catch(error => console.log(error))
+    
+
     }
-    getPokemon()
+
+
+    function getUniqueNumber() {
+        ranNum = Math.floor(Math.random() * 151)
+        return ranNum
+    } 
+
+    
+
+// function fetchPokemonInfo(userName) {
+//     let header = document.createElement('h2')
+//     header.textContent = 'poke-list'
+//     document.querySelector('#poke-list').appendChild(header) 
+//     fetch(pokeData)
+//     .then(res => res.json())
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err))
+
+// } 
+// fetchPokemonInfo()
+    
 
     function pokeCard() {
         const list =  document.querySelector('#btn')
         
-        list.addEventListener('click', (e) => {
-            console.log('button works')
-            
-           
-     })
+        list.addEventListener('click', getPokemon(getUniqueNumber()))
     }
     pokeCard()
     
-
+    
 
 
 
@@ -41,3 +69,18 @@ function getPokemon(pokemon) {
     //     fetchRepo(searchUser)
     
    // } 
+
+
+//    (e) => {
+//     console.log('button works')
+//     e.target.getPokemon()
+    
+   
+// })
+
+
+// Tried this with fetch
+//console.log(Math.floor(Math.random(data) * 151)
+
+// First URL tried with the fetch Method. Grabs first 150 pokemon.
+//'https://pokeapi.co/api/v2/pokemon?offset=1&limit=150'
