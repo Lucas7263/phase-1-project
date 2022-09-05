@@ -6,19 +6,21 @@ function getPokemon(ranNum) {
     // want data that is pulled to select 6 or 12 random pokemon for players to choose from
     //.then(data => console.log(data))
     .then(data => { 
-        console.log(data) 
-        //pokemon's img first
-        console.log(data.sprites.front_default)
-        //pokemon's name second
-        console.log(data.name.toUpperCase())
-        //pokemon's HP third
-        console.log(data.stats[0].stat.name)
-        console.log(data.stats[0].base_stat)
-        //pokemon's moves last
-        console.log(data.moves[1].move.name)
-        console.log(data.moves[2].move.name)
-        console.log(data.moves[3].move.name)
-        console.log(data.moves[4].move.name)
+        pokeInfo = data
+        pokeCard(pokeInfo)
+        // console.log(data) 
+        // //pokemon's img first
+        // console.log(data.sprites.front_default)
+        // //pokemon's name second
+        // console.log(data.name.toUpperCase())
+        // //pokemon's HP third
+        // console.log(data.stats[0].stat.name)
+        // console.log(data.stats[0].base_stat)
+        // //pokemon's moves last
+        // console.log(data.moves[1].move.name)
+        // console.log(data.moves[2].move.name)
+        // console.log(data.moves[3].move.name)
+        // console.log(data.moves[4].move.name)
 
        
        
@@ -30,11 +32,22 @@ function getPokemon(ranNum) {
 
     }
 
-
-    // function getUniqueNumber() {
-    //     ranNum = Math.floor(Math.random() * 151)
-    //     return ranNum
-    // } 
+    function pokeCard(pokeInfo) {
+        console.log(pokeInfo) 
+        //pokemon's img first
+        console.log(pokeInfo.sprites.front_default)
+        //pokemon's name second
+        console.log(pokeInfo.name.toUpperCase())
+        //pokemon's HP third
+        console.log(pokeInfo.stats[0].stat.name)
+        console.log(pokeInfo.stats[0].base_stat)
+        //pokemon's moves last
+        console.log(pokeInfo.moves[1].move.name)
+        console.log(pokeInfo.moves[2].move.name)
+        console.log(pokeInfo.moves[3].move.name)
+        console.log(pokeInfo.moves[4].move.name)
+    }
+    
 
     
 
@@ -51,7 +64,7 @@ function getPokemon(ranNum) {
 // fetchPokemonInfo()
     
 
-    function pokeCard() {
+    function pokeButton() {
         ranNum = Math.floor(Math.random() * 151)
         const list =  document.querySelector('#btn')
        
@@ -60,7 +73,7 @@ function getPokemon(ranNum) {
         list.addEventListener('click',  () => {
             getPokemon(ranNum)})
     }
-    pokeCard()
+    pokeButton()
     
     
 
