@@ -12,9 +12,13 @@ function getPokemon(ranNum) {
         //pokemon's name second
         console.log(data.name.toUpperCase())
         //pokemon's HP third
-
+        console.log(data.stats[0].stat.name)
+        console.log(data.stats[0].base_stat)
         //pokemon's moves last
-        
+        console.log(data.moves[1].move.name)
+        console.log(data.moves[2].move.name)
+        console.log(data.moves[3].move.name)
+        console.log(data.moves[4].move.name)
 
        
        
