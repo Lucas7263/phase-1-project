@@ -6,8 +6,8 @@ function getPokemon(ranNum) {
     // want data that is pulled to select 6 or 12 random pokemon for players to choose from
     //.then(data => console.log(data))
     .then(data => { 
-        //console.log(ranNum = Math.floor(Math.random(data) * 151))
-       console.log(data)
+        
+       console.log(data.sprites.front_default)
        
     })
     
