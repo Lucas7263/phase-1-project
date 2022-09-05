@@ -9,18 +9,19 @@ function getPokemon(ranNum) {
         
        console.log(data.sprites.front_default)
        
+       
     })
-    
+    // pokeCard() tried invoking pokeCard function in here...didn't work
     .catch(error => console.log(error))
     
 
     }
 
 
-    function getUniqueNumber() {
-        ranNum = Math.floor(Math.random() * 151)
-        return ranNum
-    } 
+    // function getUniqueNumber() {
+    //     ranNum = Math.floor(Math.random() * 151)
+    //     return ranNum
+    // } 
 
     
 
@@ -38,9 +39,12 @@ function getPokemon(ranNum) {
     
 
     function pokeCard() {
+        ranNum = Math.floor(Math.random() * 151)
         const list =  document.querySelector('#btn')
+       
         
-        list.addEventListener('click', getPokemon(getUniqueNumber()))
+        list.addEventListener('click',  () => {
+            getPokemon(ranNum)})
     }
     pokeCard()
     
