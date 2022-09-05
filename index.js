@@ -6,12 +6,21 @@ function getPokemon(ranNum) {
     // want data that is pulled to select 6 or 12 random pokemon for players to choose from
     //.then(data => console.log(data))
     .then(data => { 
+        console.log(data) 
+        //pokemon's img first
+        console.log(data.sprites.front_default)
+        //pokemon's name second
+        console.log(data.name)
+        //pokemon's HP third
+
+        //pokemon's moves last
         
-       console.log(data.sprites.front_default)
+        
+       
        
        
     })
-    // pokeCard() tried invoking pokeCard function in here...didn't work
+    
     .catch(error => console.log(error))
     
 
@@ -42,7 +51,8 @@ function getPokemon(ranNum) {
         ranNum = Math.floor(Math.random() * 151)
         const list =  document.querySelector('#btn')
        
-        
+        //need to use arrow function syntax to make it where the function 
+        //doesn't run without btn being clicked
         list.addEventListener('click',  () => {
             getPokemon(ranNum)})
     }
