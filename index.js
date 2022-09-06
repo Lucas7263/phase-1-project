@@ -35,14 +35,17 @@ function getPokemon(ranNum) {
     function pokeCard(pokeInfo) {
         console.log(pokeInfo) 
         //pokemon's img first
-        console.log(pokeInfo.sprites.front_default)
+        let p1 = document.createElement('img');
+        p1.src = (pokeInfo.sprites.front_default);
+        document.querySelector('#poke-list').appendChild(p1);
+        console.log(pokeInfo.sprites.front_default);
         //pokemon's name second
         console.log(pokeInfo.name.toUpperCase())
         //pokemon's HP third
         console.log(pokeInfo.stats[0].stat.name)
         console.log(pokeInfo.stats[0].base_stat)
         //pokemon's moves last
-        console.log(pokeInfo.moves[1].move.name)
+        console.log(pokeInfo.moves[0].move.name)
         console.log(pokeInfo.moves[2].move.name)
         console.log(pokeInfo.moves[3].move.name)
         console.log(pokeInfo.moves[4].move.name)
@@ -115,3 +118,9 @@ function getPokemon(ranNum) {
 
 // First URL tried with the fetch Method. Grabs first 150 pokemon.
 //'https://pokeapi.co/api/v2/pokemon?offset=1&limit=150'
+
+// Tried using forEach() to loop through pokemon moves array
+// let moveList = pokeInfo.moves
+// moveList.forEach((n) => {
+//    console.log(n) 
+// })
