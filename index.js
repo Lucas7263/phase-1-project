@@ -45,9 +45,31 @@ function getPokemon(ranNum) {
         document.querySelector('#poke-list').appendChild(p2);
         console.log(pokeInfo.name.toUpperCase())
         //pokemon's HP third
+        let p3 = document.createElement('p');
+        p3.textContent = pokeInfo.stats[0].stat.name.toUpperCase(); 
+        document.querySelector('#poke-list').appendChild(p3);
+        let p4 = document.createElement('p')
+        p4.textContent = pokeInfo.stats[0].base_stat
+        document.querySelector('#poke-list').appendChild(p4);
         console.log(pokeInfo.stats[0].stat.name)
         console.log(pokeInfo.stats[0].base_stat)
         //pokemon's moves last
+        //Move 1
+        let p5 = document.createElement('p');
+        p5.textContent = pokeInfo.moves[0].move.name.toUpperCase();
+        document.querySelector('#poke-list').appendChild(p5);
+        //Move 2
+        let p6 = document.createElement('p');
+        p6.textContent = pokeInfo.moves[2].move.name.toUpperCase();
+        document.querySelector('#poke-list').appendChild(p6);
+        //Move 3
+        let p7 = document.createElement('p');
+        p7.textContent = pokeInfo.moves[3].move.name.toUpperCase();
+        document.querySelector('#poke-list').appendChild(p7);
+        //Move 4
+        let p8 = document.createElement('p');
+        p8.textContent = pokeInfo.moves[4].move.name.toUpperCase();
+        document.querySelector('#poke-list').appendChild(p8);
         console.log(pokeInfo.moves[0].move.name)
         console.log(pokeInfo.moves[2].move.name)
         console.log(pokeInfo.moves[3].move.name)
