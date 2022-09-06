@@ -1,6 +1,4 @@
 function getPokemon(ranNum) {
-    let pokeData = document.createElement('p')
-    
     fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`)
     .then(res => res.json())
     // want data that is pulled to select 6 or 12 random pokemon for players to choose from
@@ -8,42 +6,26 @@ function getPokemon(ranNum) {
     .then(data => { 
         pokeInfo = data
         pokeCard(pokeInfo)
-        // console.log(data) 
-        // //pokemon's img first
-        // console.log(data.sprites.front_default)
-        // //pokemon's name second
-        // console.log(data.name.toUpperCase())
-        // //pokemon's HP third
-        // console.log(data.stats[0].stat.name)
-        // console.log(data.stats[0].base_stat)
-        // //pokemon's moves last
-        // console.log(data.moves[1].move.name)
-        // console.log(data.moves[2].move.name)
-        // console.log(data.moves[3].move.name)
-        // console.log(data.moves[4].move.name)
-
-       
-       
-       
     })
-    
     .catch(error => console.log(error))
-    
-
-    }
+}
 
     function pokeCard(pokeInfo) {
+        //Pokemon's Data from fetch request
         console.log(pokeInfo) 
+        
         //pokemon's img first
         let p1 = document.createElement('img');
         p1.src = (pokeInfo.sprites.front_default);
         document.querySelector('#poke-list').appendChild(p1);
         console.log(pokeInfo.sprites.front_default);
+       
         //pokemon's name second
         let p2 = document.createElement('p');
         p2.textContent =  pokeInfo.name.toUpperCase();
         document.querySelector('#poke-list').appendChild(p2);
         console.log(pokeInfo.name.toUpperCase())
+        
         //pokemon's HP third
         let p3 = document.createElement('p');
         p3.textContent = pokeInfo.stats[0].stat.name.toUpperCase(); 
@@ -53,6 +35,7 @@ function getPokemon(ranNum) {
         document.querySelector('#poke-list').appendChild(p4);
         console.log(pokeInfo.stats[0].stat.name)
         console.log(pokeInfo.stats[0].base_stat)
+       
         //pokemon's moves last
         //Move 1
         let p5 = document.createElement('p');
@@ -70,6 +53,7 @@ function getPokemon(ranNum) {
         let p8 = document.createElement('p');
         p8.textContent = pokeInfo.moves[4].move.name.toUpperCase();
         document.querySelector('#poke-list').appendChild(p8);
+        
         console.log(pokeInfo.moves[0].move.name)
         console.log(pokeInfo.moves[2].move.name)
         console.log(pokeInfo.moves[3].move.name)
@@ -93,12 +77,13 @@ function getPokemon(ranNum) {
     
 
     function pokeButton() {
-        ranNum = Math.floor(Math.random() * 151)
+       
         const list =  document.querySelector('#btn')
        
         //need to use arrow function syntax to make it where the function 
         //doesn't run without btn being clicked
         list.addEventListener('click',  () => {
+            ranNum = Math.floor(Math.random() * 151)
             getPokemon(ranNum)})
     }
     pokeButton()
