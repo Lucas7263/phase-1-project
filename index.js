@@ -28,11 +28,13 @@ function getPokemon(ranNum) {
         
         //pokemon's HP third
         let p3 = document.createElement('p');
-        p3.textContent = pokeInfo.stats[0].stat.name.toUpperCase(); 
+        p3.textContent = `HP: ${pokeInfo.stats[0].base_stat}`;
+        // p3.textContent = pokeInfo.stats[0].stat.name.toUpperCase(); 
         document.querySelector('#poke-list').appendChild(p3);
-        let p4 = document.createElement('p')
-        p4.textContent = pokeInfo.stats[0].base_stat
-        document.querySelector('#poke-list').appendChild(p4);
+        
+        // let p4 = document.createElement('p')
+        // p4.textContent = pokeInfo.stats[0].base_stat
+        // document.querySelector('#poke-list').appendChild(p4);
         console.log(pokeInfo.stats[0].stat.name)
         console.log(pokeInfo.stats[0].base_stat)
        
@@ -83,6 +85,8 @@ function getPokemon(ranNum) {
         //need to use arrow function syntax to make it where the function 
         //doesn't run without btn being clicked
         list.addEventListener('click',  () => {
+            // In order for a new number to be generated each time button is clicked. 
+            //ranNum variable needs to be located inside the event listener function.
             ranNum = Math.floor(Math.random() * 151)
             getPokemon(ranNum)})
     }
@@ -94,25 +98,10 @@ function getPokemon(ranNum) {
 
 
 
-// function pokeCard() {
-//     let p = document.createElement('p')
-//     let btn = document.createElement('button')
-//     btn.textContent = ' x'
-//     //p.textContent = `${searchUser} `
-//     p.appendChild(btn).addEventListener('click', deleteSearch)
-//     //let p1 = document.createElement('img')    
-    
-    
-//     document.querySelector('#user-list').appendChild(p) 
-//     let userInfo = getPokemon(event1)
-//     .then(res => res.json())
-//     .then(data => p1.src = (data.items[0].avatar_url))
-//     .catch(err => console.log(err))
-    // document.querySelector('#user-list').appendChild(p1) 
-    // p.addEventListener('click', (e) => {
-    //     fetchRepo(searchUser)
-    
-   // } 
+function darkMode() {
+    const darkLight = document.querySelector('#darkmode')
+    darkLight.classList.toggle("dark-mode").addEventListener('click')
+}
 
 
 //    (e) => {
@@ -134,3 +123,16 @@ function getPokemon(ranNum) {
 // moveList.forEach((n) => {
 //    console.log(n) 
 // })
+
+// CSS for dark mode 
+// body {
+//     padding: 25px;
+//     background-color: white;
+//     color: black;
+//     font-size: 25px;
+//   }
+  
+//   .dark-mode {
+//     background-color: black;
+//     color: white;
+//   }
