@@ -40,6 +40,9 @@ function getPokemon(ranNum) {
         document.querySelector('#poke-list').appendChild(p1);
         console.log(pokeInfo.sprites.front_default);
         //pokemon's name second
+        let p2 = document.createElement('p');
+        p2.textContent =  pokeInfo.name.toUpperCase();
+        document.querySelector('#poke-list').appendChild(p2);
         console.log(pokeInfo.name.toUpperCase())
         //pokemon's HP third
         console.log(pokeInfo.stats[0].stat.name)
