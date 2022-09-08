@@ -1,3 +1,15 @@
+//Banner that pops up on page load that has a question Y/N 
+//"Do you have what it takes to be a pokemon master?!"
+// document.addEventListener('DOMContentLoaded', () => {
+//     console.log(document.querySelector('form'))
+//     let banner = document.querySelector('banner')
+//     form.addEventListener('submit', (e) =>  {
+//         e.preventDefault()
+//         searchResult(e.target.search.value)
+//         form.reset()
+//     }) 
+// })
+
 function getPokemon(ranNum) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`)
     .then(res => res.json())
@@ -6,6 +18,7 @@ function getPokemon(ranNum) {
     .then(data => { 
         pokeInfo = data
         pokeCard(pokeInfo)
+    
     })
     .catch(error => console.log(error))
 }
@@ -29,38 +42,58 @@ function getPokemon(ranNum) {
         //pokemon's HP third
         let p3 = document.createElement('p');
         p3.textContent = `HP: ${pokeInfo.stats[0].base_stat}`;
-        // p3.textContent = pokeInfo.stats[0].stat.name.toUpperCase(); 
         document.querySelector('#poke-list').appendChild(p3);
         
-        // let p4 = document.createElement('p')
-        // p4.textContent = pokeInfo.stats[0].base_stat
-        // document.querySelector('#poke-list').appendChild(p4);
         console.log(pokeInfo.stats[0].stat.name)
         console.log(pokeInfo.stats[0].base_stat)
        
         //pokemon's moves last
+        const pokeMoves = pokeInfo.moves
+        moveCounter = 0
+        for (const moves of pokeMoves) {
+            moveCounter++
+                
+            if (moveCounter <= 4){
+                let p4 = document.createElement('p')
+                p4.textContent = moves.move.name.toUpperCase();
+                document.querySelector('#poke-list').appendChild(p4);
+             }
+           else {
+                break
+           }
+            
+        }
+            //pokeCard.forEach(...) possible code syntax for making poke card to grab
+
         //Move 1
-        let p5 = document.createElement('p');
-        p5.textContent = pokeInfo.moves[0].move.name.toUpperCase();
-        document.querySelector('#poke-list').appendChild(p5);
+        // let p1 = document.createElement('p')
+        // let p1.textContent = pokeInfo.moves[0].move.name.toUpperCase();
+        // document.querySelector('#poke-list').appendChild(p5);
+        
         //Move 2
-        let p6 = document.createElement('p');
-        p6.textContent = pokeInfo.moves[2].move.name.toUpperCase();
-        document.querySelector('#poke-list').appendChild(p6);
+        // let p6 = document.createElement('p');
+        // p6.textContent = pokeInfo.moves[2].move.name.toUpperCase();
+        // document.querySelector('#poke-list').appendChild(p6);
+       
         //Move 3
-        let p7 = document.createElement('p');
-        p7.textContent = pokeInfo.moves[3].move.name.toUpperCase();
-        document.querySelector('#poke-list').appendChild(p7);
+        // let p7 = document.createElement('p');
+        // p7.textContent = pokeInfo.moves[3].move.name.toUpperCase();
+        // document.querySelector('#poke-list').appendChild(p7);
+        
         //Move 4
-        let p8 = document.createElement('p');
-        p8.textContent = pokeInfo.moves[4].move.name.toUpperCase();
-        document.querySelector('#poke-list').appendChild(p8);
+        // let p8 = document.createElement('p');
+        // p8.textContent = pokeInfo.moves[4].move.name.toUpperCase();
+        // document.querySelector('#poke-list').appendChild(p8);
         
         console.log(pokeInfo.moves[0].move.name)
         console.log(pokeInfo.moves[2].move.name)
         console.log(pokeInfo.moves[3].move.name)
         console.log(pokeInfo.moves[4].move.name)
     }
+       
+       
+        
+       
     
 
     
@@ -136,3 +169,31 @@ function darkMode() {
 //     background-color: black;
 //     color: white;
 //   }
+
+
+// function getPokemon(ranNum) {
+//     fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`)
+//     .then(res => res.json())
+//     // want data that is pulled to select 6 or 12 random pokemon for players to choose from
+//     //.then(data => console.log(data))
+//     .then(data => { 
+//         pokeInfo = data
+//         pokeCard(pokeInfo)
+//     })
+//     .catch(error => console.log(error))
+//}
+
+// forEach() functtion attempt for looping through moves array
+// let moveCounter = 0
+// function listMoves(pokeMoves) {
+//     // random = Math.floor(Math.random() * pokeMoves.length)
+//     // console.log(random)
+//         if (moveCounter < 4) {
+//             let p5 = document.createElement('p');
+//         p5.textContent = pokeMoves.move.name.toUpperCase();
+//         document.querySelector('#poke-list').appendChild(p5);
+//         moveCounter++
+//         }
+        
+        
+//     }   
