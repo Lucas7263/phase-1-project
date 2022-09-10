@@ -30,15 +30,16 @@ function getPokemon(ranNum) {
                 name: pokeInfo.name.toUpperCase(),
                 HP: `HP: ${pokeInfo.stats[0].base_stat}`,
                 move1: pokeInfo.moves[0].move.name,
-                move2: pokeInfo.moves[2].move.name,
-                move3: pokeInfo.moves[3].move.name,
-                move4: pokeInfo.moves[4].move.name
+                move2: pokeInfo.moves[1].move.name,
+                move3: pokeInfo.moves[2].move.name,
+                move4: pokeInfo.moves[3].move.name
             }
             
         ]
         
         console.log(pokeMon)
         
+        pokeMon.push()
         //didn't work for adding new pokemon to the new array
         //pokeMon.forEach(getPokemon).push()
         
