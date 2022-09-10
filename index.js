@@ -22,7 +22,14 @@ function getPokemon(ranNum) {
     })
     .catch(error => console.log(error))
 }
-let pokeArr = []
+
+function getMove(pokeData) {
+    ranMove = Math.floor(Math.random() * pokeData.moves.length)
+        console.log(ranMove, "this is the random moves")
+            return ranMove;
+            
+}
+let pokeArr = [];
     function pokeCard(pokeInfo) {
         
         let pokeElement = [
@@ -30,10 +37,10 @@ let pokeArr = []
                 image: pokeInfo.sprites.front_default,
                 name: pokeInfo.name.toUpperCase(),
                 HP: `HP: ${pokeInfo.stats[0].base_stat}`,
-                move1: pokeInfo.moves[0].move.name,
-                move2: pokeInfo.moves[1].move.name,
-                move3: pokeInfo.moves[2].move.name,
-                move4: pokeInfo.moves[3].move.name
+                move1: pokeInfo.moves[getMove(pokeInfo)].move.name,
+                move2: pokeInfo.moves[getMove(pokeInfo)].move.name,
+                move3: pokeInfo.moves[getMove(pokeInfo)].move.name,
+                move4: pokeInfo.moves[getMove(pokeInfo)].move.name
             }
             
         ]
