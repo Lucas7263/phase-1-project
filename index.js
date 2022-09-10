@@ -22,9 +22,10 @@ function getPokemon(ranNum) {
     })
     .catch(error => console.log(error))
 }
-
+let pokeArr = []
     function pokeCard(pokeInfo) {
-        const pokeMon = [
+        
+        let pokeElement = [
             {
                 image: pokeInfo.sprites.front_default,
                 name: pokeInfo.name.toUpperCase(),
@@ -36,10 +37,10 @@ function getPokemon(ranNum) {
             }
             
         ]
+        pokeArr.push(pokeElement)
+        console.log(pokeArr)
         
-        console.log(pokeMon)
         
-        pokeMon.push()
         //didn't work for adding new pokemon to the new array
         //pokeMon.forEach(getPokemon).push()
         
