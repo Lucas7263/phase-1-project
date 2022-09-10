@@ -24,25 +24,43 @@ function getPokemon(ranNum) {
 }
 
     function pokeCard(pokeInfo) {
+        const pokeMon = [
+            {
+                image: pokeInfo.sprites.front_default,
+                name: pokeInfo.name.toUpperCase(),
+                HP: `HP: ${pokeInfo.stats[0].base_stat}`,
+                move1: pokeInfo.moves[0].move.name,
+                move2: pokeInfo.moves[2].move.name,
+                move3: pokeInfo.moves[3].move.name,
+                move4: pokeInfo.moves[4].move.name
+            }
+            
+        ]
+        
+        console.log(pokeMon)
+        
+        //didn't work for adding new pokemon to the new array
+        //pokeMon.forEach(getPokemon).push()
+        
         //Pokemon's Data from fetch request
         console.log(pokeInfo) 
         
         //pokemon's img first
         let p1 = document.createElement('img');
         p1.src = (pokeInfo.sprites.front_default);
-        document.querySelector('#poke-list').appendChild(p1);
+        document.querySelector('#poke-container').appendChild(p1);
         console.log(pokeInfo.sprites.front_default);
        
         //pokemon's name second
         let p2 = document.createElement('p');
         p2.textContent =  pokeInfo.name.toUpperCase();
-        document.querySelector('#poke-list').appendChild(p2);
+        document.querySelector('#poke-container').appendChild(p2);
         console.log(pokeInfo.name.toUpperCase())
         
         //pokemon's HP third
         let p3 = document.createElement('p');
         p3.textContent = `HP: ${pokeInfo.stats[0].base_stat}`;
-        document.querySelector('#poke-list').appendChild(p3);
+        document.querySelector('#poke-container').appendChild(p3);
         
         console.log(pokeInfo.stats[0].stat.name)
         console.log(pokeInfo.stats[0].base_stat)
@@ -56,7 +74,7 @@ function getPokemon(ranNum) {
             if (moveCounter <= 4){
                 let p4 = document.createElement('p')
                 p4.textContent = moves.move.name.toUpperCase();
-                document.querySelector('#poke-list').appendChild(p4);
+                document.querySelector('#poke-container').appendChild(p4);
              }
            else {
                 break
@@ -65,25 +83,7 @@ function getPokemon(ranNum) {
         }
             //pokeCard.forEach(...) possible code syntax for making poke card to grab
 
-        //Move 1
-        // let p1 = document.createElement('p')
-        // let p1.textContent = pokeInfo.moves[0].move.name.toUpperCase();
-        // document.querySelector('#poke-list').appendChild(p5);
-        
-        //Move 2
-        // let p6 = document.createElement('p');
-        // p6.textContent = pokeInfo.moves[2].move.name.toUpperCase();
-        // document.querySelector('#poke-list').appendChild(p6);
        
-        //Move 3
-        // let p7 = document.createElement('p');
-        // p7.textContent = pokeInfo.moves[3].move.name.toUpperCase();
-        // document.querySelector('#poke-list').appendChild(p7);
-        
-        //Move 4
-        // let p8 = document.createElement('p');
-        // p8.textContent = pokeInfo.moves[4].move.name.toUpperCase();
-        // document.querySelector('#poke-list').appendChild(p8);
         
         console.log(pokeInfo.moves[0].move.name)
         console.log(pokeInfo.moves[2].move.name)
@@ -92,8 +92,10 @@ function getPokemon(ranNum) {
     }
        
        
-        
+    // function pokeCard1() {
        
+    // }
+    //    pokeCard1()
     
 
     
@@ -183,17 +185,3 @@ function darkMode() {
 //     .catch(error => console.log(error))
 //}
 
-// forEach() functtion attempt for looping through moves array
-// let moveCounter = 0
-// function listMoves(pokeMoves) {
-//     // random = Math.floor(Math.random() * pokeMoves.length)
-//     // console.log(random)
-//         if (moveCounter < 4) {
-//             let p5 = document.createElement('p');
-//         p5.textContent = pokeMoves.move.name.toUpperCase();
-//         document.querySelector('#poke-list').appendChild(p5);
-//         moveCounter++
-//         }
-        
-        
-//     }   
