@@ -1,65 +1,52 @@
 //Banner that pops up on page load that has a question Y/N 
 //"Do you have what it takes to be a pokemon master?!"
 
-// adds alert box on page load.
+//adds alert box on page load.
 // document.addEventListener('DOMContentLoaded', () => {
     
-//    alert('Do you have what it takes to become a pokémon master')
+//    alert('A Pokémon trainer has challenged you to a battle!!')
 //     }); 
-
 
 
 
 let pokeArr = [];
 
 
-function loadPokeArr(pokeInfo) {
-    let pokeElement = 
-                     {
-                        image: pokeInfo.sprites.front_default,
-                        name: pokeInfo.name.toUpperCase(),
-                        health: `HP: ${pokeInfo.stats[0].base_stat}`,
-                        moves: [pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(), 
-                        pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(),
-                        pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(),
-                        pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase()]
+// function loadPokeArr(pokeInfo) {
+//     let pokeElement = 
+//                      {
+//                         image: pokeInfo.sprites.front_default,
+//                         name: pokeInfo.name.toUpperCase(),
+//                         health: `HP: ${pokeInfo.stats[0].base_stat}`,
+//                         moves: [pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(), 
+//                         pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(),
+//                         pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(),
+//                         pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase()]
                         
                                 
-                    }
+//                     }
                     
-                    pokeArr.push(pokeElement)  
-                    console.log(pokeArr[0].image)
+//                     pokeArr.push(pokeElement)  
+//                     console.log(pokeArr[0].image)
                     
-}
-async function  getPokemon(ranNum) {
+//}
+ async function getPokemon(ranNum) {
    
    
-   await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`)
-    .then(res => res.json())
-    // want data that is pulled to select 6 or 12 random pokemon for players to choose from
-    //.then(data => console.log(data))
-    .then(data => { 
-        pokeInfo = data
-        let pokeElement = 
-        {
-           image: pokeInfo.sprites.front_default,
-           name: pokeInfo.name.toUpperCase(),
-           health: `HP: ${pokeInfo.stats[0].base_stat}`,
-           moves: [pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(), 
-           pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(),
-           pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(),
-           pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase()]
-           
-                   
-       }
-       
-    //    pArray.push(pokeElement)  
-        // pokeInfo = data
-        // pokeCard(pokeInfo)
-        return pokeElement
+  let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`);
+    let user = await response.json()
     
-    })
-    .catch(error => console.log(error))
+   
+    //.then(data => { 
+       { pokeInfo = user
+        
+        pokeData(pokeInfo);
+    
+    
+    }
+    try {(error => console.log(error))}
+    catch {(console.log('Error!'))}
+
    
 };
 
@@ -71,40 +58,67 @@ function getMove(pokeData) {
 };
 
 
-    function pokeCard() {
+    function pokeData(pokeInfo) {
+        let pokeElement = 
+        {
+           image: pokeInfo.sprites.front_default,
+           name: pokeInfo.name.toUpperCase(),
+           health: `HP: ${pokeInfo.stats[0].base_stat}`,
+           moves: 
+           [pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(), 
+           pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(),
+           pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(),
+           pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase()],
+           
+           };
+         
+                    // pokeArr.push(pokeElement);
+                    // console.log(pokeArr[0].image);
+                    // console.log(pokeElement.name);
+
+                    // pokeArr.forEach((n) => {
+                    //     printCard(n)
+                    // })
+                  createPokeCard(pokeElement);
+
+                    console.log(pokeArr)
+
+                   
+
+
         
         
-        //console.log(pokeArr[0])
         
         
-        //didn't work for adding new pokemon to the new array
-        //pokeMon.forEach(getPokemon).push()
-        
-        //Pokemon's Data from fetch request
+       
         
         //pokeArr.forEach((poke) => {
         //pokemon's img first
         // let p1 = document.createElement('img');
-        // p1.src = pokeArr[0].image;
-        // document.querySelector('#poke-container').appendChild(p1);
-        // console.log(pokeArr[0].image);
+        // p1.src = pokeElement.image;
+        // document.querySelector('#poke-list').append(p1);
+        // console.log(pokeElement.image);
        
         //pokemon's name second
         // let p2 = document.createElement('p');
-        // p2.textContent =  pokeArr[0].name;
-        // document.querySelector('#poke-container').appendChild(p2);
-        // console.log(pokeArr[0].name)
+        // p2.textContent =  pokeElement.name;
+        // document.querySelector('#poke-list').appendChild(p2);
+        //console.log(pokeElement.name)
         
         // //pokemon's HP third
         // let p3 = document.createElement('p');
-        // p3.textContent = pokeArr[0].health;
-        // document.querySelector('#poke-container').appendChild(p3);
+        // p3.textContent = pokeElement.health;
+        // document.querySelector('#poke-list').appendChild(p3);
         
          
         // pokeArr[0].moves.forEach((n) => {
-        //             let pMove = document.createElement('p')
-        //             pMove.textContent = n;
-        //             document.querySelector('#poke-container').appendChild(pMove);
+                    // let moveOne = document.createElement('p')
+                    // moveOne.textContent = pokeElement.moves[0]
+                    // document.querySelector('#poke-list').appendChild(moveOne);
+
+                    // let moveTwo = document.createElement('p')
+                    // moveTwo.textContent = pokeElement.moves[1];
+                    // document.querySelector('#poke-list').appendChild(moveTwo);
         //         }) // End of moves forEach()
 
             //}) // End of pokeArr forEach()
@@ -119,69 +133,94 @@ function getMove(pokeData) {
         // console.log(pokeInfo.moves[3].move.name)
         // console.log(pokeInfo.moves[4].move.name)
     }
+    const colors = {
+        fire: '#FDDFDF',
+        grass: '#DEFDE0',
+        electric: '#FCF7DE',
+        water: '#DEF3FD',
+        ground: '#f4e7da',
+        rock: '#d5d5d4',
+        fairy: '#fceaff',
+        poison: '#98d7a5',
+        bug: '#f8d5a3',
+        dragon: '#97b3e6',
+        psychic: '#eaeda1',
+        flying: '#F5F5F5',
+        fighting: '#E6E0D4',
+        normal: '#F5F5F5'
+    };
+
+    const main_types = Object.keys(colors);
+   
+    function createPokeCard(pokeElement) {
        
        
-    // function pokeCard1() {
-       
-    // }
-    //    pokeCard1()
+        
+
+    const poke_container = document.getElementById('poke-container');
+    const pokemonEl = document.createElement('div');
+    pokemonEl.classList.add('pokemon');
+    
+    const poke_types = pokeInfo.types.map(type => type.type.name);
+	const type = main_types.find(type => poke_types.indexOf(type) > -1);
+    const color = colors[type];
+
+    pokemonEl.style.backgroundColor = color;
+   
+    const pokeInnerHTML = `
+    <div class="img-container">
+            <img src= ${pokeElement.image}
+						}.png"/>
+        </div>
+        <div class="info">
+             <h3 class="name">${pokeElement.name}</h3>
+             <h4 class="health">${pokeElement.health}</h4>
+             
+             <h5 class="moves">${pokeElement.moves[0]}</h5>           
+             <h5 class="moves">${pokeElement.moves[1]}</h5>            
+            
+             </div>             
+    `;
+    pokemonEl.innerHTML = pokeInnerHTML;
+
+    poke_container.appendChild(pokemonEl)
+           
+     }
     
 
     
 
-// function fetchPokemonInfo(userName) {
-//     let header = document.createElement('h2')
-//     header.textContent = 'poke-list'
-//     document.querySelector('#poke-list').appendChild(header) 
-//     fetch(pokeData)
-//     .then(res => res.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.log(err))
 
-// } 
-// fetchPokemonInfo()
     
 
     function pokeButton() {
        
         const list =  document.querySelector('#btn')
        
-        //need to use arrow function syntax to make it where the function 
-        //doesn't run without btn being clicked
-        list.addEventListener('click',  () => { 
-            // In order for a new number to be generated each time button is clicked. 
-            //ranNum variable needs to be located inside the event listener function.
-            // let maxPokemon = 3;  // Needs to be an array
+       
+        list.addEventListener('click',   () =>  { 
+          
+            //let maxPokemon = 3;  // Needs to be an array
            
-            //for (i = 0; i < maxPokemon; i++) {
+            for (i = 0; i < 12; i++) {
                 
                     ranNum = Math.floor(Math.random() * 151)
            
-                pokeArr.push(getPokemon(ranNum, pokeArr));
                
-                console.log(pokeArr)
-                    // let pokeElement = 
-        
+                     getPokemon(ranNum)
+                   
+              
                 
-                    // {
-                    //     image: pokeData.sprites.front_default,
-                    //     name: pokeData.name.toUpperCase(),
-                    //     health: `HP: ${pokeData.stats[0].base_stat}`,
-                    //     moves: [pokeData.moves[getMove(pokeData)].move.name.toUpperCase(), 
-                    //            pokeData.moves[getMove(pokeData)].move.name.toUpperCase(),
-                    //            pokeData.moves[getMove(pokeData)].move.name.toUpperCase(),
-                    //            pokeData.moves[getMove(pokeData)].move.name.toUpperCase()]
-                        
-                                
-                    // }
-                    // pokeArr.push(pokeElement)
+                  
                    
                  
              
-                 
-            // }
-            pokeCard()
+            
+            }
+            
+            //pokeCard()
         }) // End of Event Listener
+        
     }
     pokeButton();
     
@@ -189,10 +228,7 @@ function getMove(pokeData) {
           
             
         
-        // pokeArr.push(pokeElement)
-        // pokeCard(pokeInfo)
-    //}
-    // pokeButton()
+       
     
     
 
@@ -200,31 +236,16 @@ function getMove(pokeData) {
 
 
 
-function darkMode() {
-    const darkLight = document.querySelector('#darkmode')
-    darkLight.classList.toggle("dark-mode").addEventListener('click')
-}
+// function darkMode() {
+//     const darkLight = document.querySelector('#darkmode')
+//     darkLight.classList.toggle("dark-mode").addEventListener('click')
+//}
 
 
-//    (e) => {
-//     console.log('button works')
-//     e.target.getPokemon()
-    
-   
-// })
+ 
 
 
-// Tried this with fetch
-//console.log(Math.floor(Math.random(data) * 151)
 
-// First URL tried with the fetch Method. Grabs first 150 pokemon.
-//'https://pokeapi.co/api/v2/pokemon?offset=1&limit=150'
-
-// Tried using forEach() to loop through pokemon moves array
-// let moveList = pokeInfo.moves
-// moveList.forEach((n) => {
-//    console.log(n) 
-// })
 
 // CSS for dark mode 
 // body {
@@ -240,15 +261,5 @@ function darkMode() {
 //   }
 
 
-// function getPokemon(ranNum) {
-//     fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`)
-//     .then(res => res.json())
-//     // want data that is pulled to select 6 or 12 random pokemon for players to choose from
-//     //.then(data => console.log(data))
-//     .then(data => { 
-//         pokeInfo = data
-//         pokeCard(pokeInfo)
-//     })
-//     .catch(error => console.log(error))
-//}
+
 
