@@ -11,25 +11,6 @@
 
 let pokeArr = [];
 
-
-// function loadPokeArr(pokeInfo) {
-//     let pokeElement = 
-//                      {
-//                         image: pokeInfo.sprites.front_default,
-//                         name: pokeInfo.name.toUpperCase(),
-//                         health: `HP: ${pokeInfo.stats[0].base_stat}`,
-//                         moves: [pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(), 
-//                         pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(),
-//                         pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase(),
-//                         pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase()]
-                        
-                                
-//                     }
-                    
-//                     pokeArr.push(pokeElement)  
-//                     console.log(pokeArr[0].image)
-                    
-//}
  async function getPokemon(ranNum) {
    
    
