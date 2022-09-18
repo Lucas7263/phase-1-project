@@ -9,28 +9,38 @@
 
 
 
-let pokeArr = [];
+
 
  async function getPokemon(ranNum) {
    
-   
-  let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`);
-    let user = await response.json()
-    
-   
-    //.then(data => { 
-       { pokeInfo = user
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`);
+    let data = await response.json()
+       { pokeInfo = data
         
         pokeData(pokeInfo);
     
     
     }
+
+   
+    try {(error => console.log(error))}
+    catch {(console.log('Error!'))}
+};
+
+async function getPokemonTwo(ranNumTwo) {
+    
+    let responseTwo = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNumTwo}`);
+let dataTwo = await responseTwo.json()
+   { pokeInfoTwo = dataTwo
+    console.log(pokeInfoTwo)
+    pokeDataTwo(pokeInfoTwo);
+
+
+}
     try {(error => console.log(error))}
     catch {(console.log('Error!'))}
 
-   
-};
-
+}
 function getMove(pokeData) {
     ranMove = Math.floor(Math.random() * pokeData.moves.length)
         //console.log(ranMove, "this is the random moves")
@@ -39,8 +49,16 @@ function getMove(pokeData) {
 };
 
 
+// function getMove(pokeData) {
+//     ranMove = Math.floor(Math.random() * pokeData.moves.length)
+//         //console.log(ranMove, "this is the random moves")
+//             return ranMove;
+            
+//};
+
+
     function pokeData(pokeInfo) {
-        let pokeElement = 
+        const pokeElement = 
         {
            image: pokeInfo.sprites.front_default,
            name: pokeInfo.name.toUpperCase(),
@@ -52,7 +70,28 @@ function getMove(pokeData) {
            pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase()],
            
            };
-         
+            console.log(pokeElement)
+       
+                  createPokeCardOne(pokeElement);
+                  //createPokeCardTwo(pokeElementTwo);
+
+
+    }
+
+    function pokeDataTwo(pokeInfoTwo) {
+         const pokeElementTwo = 
+        {
+           image: pokeInfoTwo.sprites.front_default,
+           name: pokeInfoTwo.name.toUpperCase(),
+           health: `HP: ${pokeInfoTwo.stats[0].base_stat}`,
+           moves: 
+           [pokeInfoTwo.moves[getMove(pokeInfoTwo)].move.name.toUpperCase(), 
+           pokeInfoTwo.moves[getMove(pokeInfoTwo)].move.name.toUpperCase(),
+           pokeInfoTwo.moves[getMove(pokeInfoTwo)].move.name.toUpperCase(),
+           pokeInfoTwo.moves[getMove(pokeInfoTwo)].move.name.toUpperCase()],
+           
+           };
+            console.log(pokeElementTwo)
                     // pokeArr.push(pokeElement);
                     // console.log(pokeArr[0].image);
                     // console.log(pokeElement.name);
@@ -60,60 +99,12 @@ function getMove(pokeData) {
                     // pokeArr.forEach((n) => {
                     //     printCard(n)
                     // })
-                  createPokeCard(pokeElement);
-
-                    console.log(pokeArr)
-
-                   
+                  createPokeCardTwo(pokeElementTwo);
 
 
-        
-        
-        
-        
-       
-        
-        //pokeArr.forEach((poke) => {
-        //pokemon's img first
-        // let p1 = document.createElement('img');
-        // p1.src = pokeElement.image;
-        // document.querySelector('#poke-list').append(p1);
-        // console.log(pokeElement.image);
-       
-        //pokemon's name second
-        // let p2 = document.createElement('p');
-        // p2.textContent =  pokeElement.name;
-        // document.querySelector('#poke-list').appendChild(p2);
-        //console.log(pokeElement.name)
-        
-        // //pokemon's HP third
-        // let p3 = document.createElement('p');
-        // p3.textContent = pokeElement.health;
-        // document.querySelector('#poke-list').appendChild(p3);
-        
-         
-        // pokeArr[0].moves.forEach((n) => {
-                    // let moveOne = document.createElement('p')
-                    // moveOne.textContent = pokeElement.moves[0]
-                    // document.querySelector('#poke-list').appendChild(moveOne);
-
-                    // let moveTwo = document.createElement('p')
-                    // moveTwo.textContent = pokeElement.moves[1];
-                    // document.querySelector('#poke-list').appendChild(moveTwo);
-        //         }) // End of moves forEach()
-
-            //}) // End of pokeArr forEach()
-       
-       
-       
-
-       
-        
-        // console.log(pokeInfo.moves[0].move.name)
-        // console.log(pokeInfo.moves[2].move.name)
-        // console.log(pokeInfo.moves[3].move.name)
-        // console.log(pokeInfo.moves[4].move.name)
     }
+    
+    
     const colors = {
         fire: '#FDDFDF',
         grass: '#DEFDE0',
@@ -133,12 +124,12 @@ function getMove(pokeData) {
 
     const main_types = Object.keys(colors);
    
-    function createPokeCard(pokeElement) {
+    function createPokeCardOne(pokeElement) {
        
        
         
 
-    const poke_container = document.getElementById('poke-container');
+    const poke_container = document.getElementById('poke-trainer 1');
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon');
     
@@ -147,8 +138,9 @@ function getMove(pokeData) {
     const color = colors[type];
 
     pokemonEl.style.backgroundColor = color;
-   
-    const pokeInnerHTML = `
+    
+    let pokeInnerHTML = `
+    
     <div class="img-container">
             <img src= ${pokeElement.image}
 						}.png"/>
@@ -156,18 +148,78 @@ function getMove(pokeData) {
         <div class="info">
              <h3 class="name">${pokeElement.name}</h3>
              <h4 class="health">${pokeElement.health}</h4>
-             
              <h5 class="moves">${pokeElement.moves[0]}</h5>           
-             <h5 class="moves">${pokeElement.moves[1]}</h5>            
-            
-             </div>             
-    `;
+             <h5 class="moves">${pokeElement.moves[1]}</h5>
+             <h5 class="moves">${pokeElement.moves[2]}</h5>
+             <h5 class="moves">${pokeElement.moves[3]}</h5>   
+
+                   
+            </div>`
+
+                //mouseEvent()
+       
+    //Says moves is undefined
+   
     pokemonEl.innerHTML = pokeInnerHTML;
 
     poke_container.appendChild(pokemonEl)
-           
-     }
     
+     }
+
+    function createPokeCardTwo(pokeElementTwo) {
+         
+       
+        
+
+        const poke_container = document.getElementById('poke-trainer 2');
+        const pokemonEl = document.createElement('div');
+        pokemonEl.classList.add('pokemon');
+        
+        const poke_types = pokeInfoTwo.types.map(type => type.type.name);
+        const type = main_types.find(type => poke_types.indexOf(type) > -1);
+        const color = colors[type];
+    
+        pokemonEl.style.backgroundColor = color;
+        
+        let pokeInnerHTML = `
+        
+        <div class="img-container">
+                <img src= ${pokeElementTwo.image}
+                            }.png"/>
+            </div>
+            <div class="info">
+                 <h3 class="name">${pokeElementTwo.name}</h3>
+                 <h4 class="health">${pokeElementTwo.health}</h4>
+                 <h5 class="moves">${pokeElementTwo.moves[0]}</h5>           
+                 <h5 class="moves">${pokeElementTwo.moves[1]}</h5>
+                 <h5 class="moves">${pokeElementTwo.moves[2]}</h5>
+                 <h5 class="moves">${pokeElementTwo.moves[3]}</h5>   
+    
+                       
+                </div>`
+    
+                    //mouseEvent()
+           
+        //Says moves is undefined
+       
+        pokemonEl.innerHTML = pokeInnerHTML;
+    
+        poke_container.appendChild(pokemonEl)
+        
+         }
+
+    // function mouseEvent() {
+    //     document.addEventListener('mouseover', (e) =>  {
+    //         e.document.getElementById('card')
+    //         console.log('test')
+    //     });
+    // }
+   
+    //  }
+    //  <h5 class="moves">${pokeElement.moves[0]}</h5>           
+    //  <h5 class="moves">${pokeElement.moves[1]}</h5>
+    //  <h5 class="moves">${pokeElement.moves[2]}</h5>
+    //  <h5 class="moves">${pokeElement.moves[3]}</h5>    
 
     
 
@@ -183,12 +235,17 @@ function getMove(pokeData) {
           
             //let maxPokemon = 3;  // Needs to be an array
            
-            for (i = 0; i < 12; i++) {
+            for (i = 0; i < 3; i++) {
                 
-                    ranNum = Math.floor(Math.random() * 151)
-           
+                    ranNum = Math.floor(Math.random() * 151);
+                    ranNumTwo = Math.floor(Math.random() * 151)
+                    console.log(ranNum)
+                    console.log(ranNumTwo)
                
-                     getPokemon(ranNum)
+                     getPokemon(ranNum);
+                     getPokemonTwo(ranNumTwo);
+                     
+                   
                    
               
                 
@@ -240,7 +297,5 @@ function getMove(pokeData) {
 //     background-color: black;
 //     color: white;
 //   }
-
-
 
 

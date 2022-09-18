@@ -7,13 +7,26 @@
     align-items: center;
   }  
   
-  /* #poke-container {
+  .T1 {
+    align-items: space-between;
+  justify-content: left;
+  margin-left: 0; 
+  margin-right: auto;
+  }
+
+  .T2 {
+    align-items: space-between;
+  justify-content: left;
+  margin-left: auto; 
+  margin-right: 0;
+  }
+  #poke-container {
     border: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
          
-  }  */
+  } 
  
   
   
@@ -88,6 +101,7 @@ h1 {
 	margin: 10px;
 	padding: 20px;
 	text-align: center;
+  
 }
 
 .pokemon .img-container {
@@ -117,5 +131,26 @@ h1 {
 .pokemon .health {
 	margin: 15px 0 7px;
 	letter-spacing: 1px;
+}
+
+
+body .poke-trainer-1 {
+  align-items: space-between;
+  justify-content: left;
+  margin-left: 0; 
+  margin-right: auto;
+  display: flex;
+  float: right;
+  max-width: min-content;
+ 
+}
+
+body .poke-trainer-2 {
+  align-items: space-between;
+  justify-content: right;
+  margin-left: auto; 
+  margin-right: 0;
+  display: flex;
+  float: left;
 }
 
