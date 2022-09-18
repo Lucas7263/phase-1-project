@@ -32,7 +32,7 @@ async function getPokemonTwo(ranNumTwo) {
     let responseTwo = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNumTwo}`);
 let dataTwo = await responseTwo.json()
    { pokeInfoTwo = dataTwo
-    console.log(pokeInfoTwo)
+  
     pokeDataTwo(pokeInfoTwo);
 
 
@@ -70,7 +70,7 @@ function getMove(pokeData) {
            pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase()],
            
            };
-            console.log(pokeElement)
+          
        
                   createPokeCardOne(pokeElement);
                   //createPokeCardTwo(pokeElementTwo);
@@ -91,7 +91,7 @@ function getMove(pokeData) {
            pokeInfoTwo.moves[getMove(pokeInfoTwo)].move.name.toUpperCase()],
            
            };
-            console.log(pokeElementTwo)
+           
                     // pokeArr.push(pokeElement);
                     // console.log(pokeArr[0].image);
                     // console.log(pokeElement.name);
@@ -156,7 +156,7 @@ function getMove(pokeData) {
                    
             </div>`
 
-                //mouseEvent()
+                mouseEvent()
        
     //Says moves is undefined
    
@@ -182,7 +182,7 @@ function getMove(pokeData) {
         pokemonEl.style.backgroundColor = color;
         
         let pokeInnerHTML = `
-        
+        <div class="card">
         <div class="img-container">
                 <img src= ${pokeElementTwo.image}
                             }.png"/>
@@ -196,9 +196,10 @@ function getMove(pokeData) {
                  <h5 class="moves">${pokeElementTwo.moves[3]}</h5>   
     
                        
+                </div>
                 </div>`
-    
-                    //mouseEvent()
+                            
+                    mouseEvent()
            
         //Says moves is undefined
        
@@ -208,12 +209,15 @@ function getMove(pokeData) {
         
          }
 
-    // function mouseEvent() {
-    //     document.addEventListener('mouseover', (e) =>  {
-    //         e.document.getElementById('card')
-    //         console.log('test')
-    //     });
-    // }
+    function mouseEvent() {
+        pokeCard = document.getElementsByClassName('pokemon')
+        // pokeCard = document.createElement('card');
+      
+        document.addEventListener('mouseover', (e) =>  {
+            e.pokeCard
+            console.log('test')
+        });
+    }
    
     //  }
     //  <h5 class="moves">${pokeElement.moves[0]}</h5>           
