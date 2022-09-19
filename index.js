@@ -49,14 +49,6 @@ function getMove(pokeData) {
 };
 
 
-// function getMove(pokeData) {
-//     ranMove = Math.floor(Math.random() * pokeData.moves.length)
-//         //console.log(ranMove, "this is the random moves")
-//             return ranMove;
-            
-//};
-
-
     function pokeData(pokeInfo) {
         const pokeElement = 
         {
@@ -73,7 +65,7 @@ function getMove(pokeData) {
           
        
                   createPokeCardOne(pokeElement);
-                  //createPokeCardTwo(pokeElementTwo);
+                
 
 
     }
@@ -92,13 +84,7 @@ function getMove(pokeData) {
            
            };
            
-                    // pokeArr.push(pokeElement);
-                    // console.log(pokeArr[0].image);
-                    // console.log(pokeElement.name);
-
-                    // pokeArr.forEach((n) => {
-                    //     printCard(n)
-                    // })
+                  
                   createPokeCardTwo(pokeElementTwo);
 
 
@@ -140,7 +126,7 @@ function getMove(pokeData) {
     pokemonEl.style.backgroundColor = color;
     
     let pokeInnerHTML = `
-    
+    <div class="card">
     <div class="img-container">
             <img src= ${pokeElement.image}
 						}.png"/>
@@ -154,12 +140,12 @@ function getMove(pokeData) {
              <h5 class="moves">${pokeElement.moves[3]}</h5>   
 
                    
+            </div>
             </div>`
 
-                mouseEvent()
+                //  mouseEvent()
        
-    //Says moves is undefined
-   
+  
     pokemonEl.innerHTML = pokeInnerHTML;
 
     poke_container.appendChild(pokemonEl)
@@ -198,10 +184,14 @@ function getMove(pokeData) {
                        
                 </div>
                 </div>`
+               
+                          
                             
-                    mouseEvent()
-           
-        //Says moves is undefined
+                            
+            
+                    // mouseEvent()
+                   
+        
        
         pokemonEl.innerHTML = pokeInnerHTML;
     
@@ -209,22 +199,27 @@ function getMove(pokeData) {
         
          }
 
-    function mouseEvent() {
-        pokeCard = document.getElementsByClassName('pokemon')
-        // pokeCard = document.createElement('card');
+    //  function mouseEvent() {
+       
+    //     pokeCard = document.getElementById('#poke-trainer 1') returns null
       
-        document.addEventListener('mouseover', (e) =>  {
-            e.pokeCard
-            console.log('test')
-        });
-    }
+    //     console.log(pokeCard)
+    //    document.addEventListener('mouseover', (e) =>  {
+    //     //    e.pokeCard.style.transform = 'scale(1.05)';
+    //        e.pokeCard
+          
+            
+            
+    //     });
+    //   console.log(pokeCard)
+        // document.addEventListener('mouseleave', (e) =>  {
+        //         e.pokeCard
+        //        console.log('mouse leave')
+        //    });
+    // }
    
     //  }
-    //  <h5 class="moves">${pokeElement.moves[0]}</h5>           
-    //  <h5 class="moves">${pokeElement.moves[1]}</h5>
-    //  <h5 class="moves">${pokeElement.moves[2]}</h5>
-    //  <h5 class="moves">${pokeElement.moves[3]}</h5>    
-
+   
     
 
 
@@ -261,7 +256,7 @@ function getMove(pokeData) {
             }
             
             //pokeCard()
-        }) // End of Event Listener
+        }, {once : true}) // End of Event Listener
         
     }
     pokeButton();
