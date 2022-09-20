@@ -34,7 +34,7 @@ let dataTwo = await responseTwo.json()
    { pokeInfoTwo = dataTwo
   
     pokeDataTwo(pokeInfoTwo);
-
+    
 
 }
     try {(error => console.log(error))}
@@ -143,7 +143,7 @@ function getMove(pokeData) {
             </div>
             </div>`
 
-                //  mouseEvent()
+                 mouseEvent()
        
   
     pokemonEl.innerHTML = pokeInnerHTML;
@@ -189,43 +189,54 @@ function getMove(pokeData) {
                             
                             
             
-                    // mouseEvent()
+                    mouseEvent()
                    
         
        
         pokemonEl.innerHTML = pokeInnerHTML;
     
         poke_container.appendChild(pokemonEl)
+       
         
          }
 
-    //  function mouseEvent() {
+     function mouseEvent() {
        
-    //     pokeCard = document.getElementById('#poke-trainer 1') returns null
+        let pokeCard = document.getElementsByClassName('card') 
       
-    //     console.log(pokeCard)
-    //    document.addEventListener('mouseover', (e) =>  {
-    //     //    e.pokeCard.style.transform = 'scale(1.05)';
-    //        e.pokeCard
-          
-            
-            
-    //     });
-    //   console.log(pokeCard)
-        // document.addEventListener('mouseleave', (e) =>  {
-        //         e.pokeCard
-        //        console.log('mouse leave')
-        //    });
-    // }
+       for (let i = 0; i < pokeCard.length; i++) {
+            pokeCard[i].addEventListener('mouseover', () =>  {
+           
+               pokeScale(i);   
+            });
+           
+            pokeCard[i].addEventListener('mouseout', () =>  {
+                
+                   pokeNormal(i);
+            });
    
-    //  }
-   
+        }
+    };
+    
+    function pokeScale(cardId) {
+        let pokeCard = document.getElementsByClassName('card') 
+       
+        pokeCard[cardId].style.transform = 'scale(1.10)';
+            
+    }
+    
+    function pokeNormal(cardId) {
+        let pokeCard = document.getElementsByClassName('card') 
+       
+        pokeCard[cardId].style.transform = 'scale(1.05)';
+            
+    }
     
 
 
     
 
-    function pokeButton() {
+    function pokeListeners() {
        
         const list =  document.querySelector('#btn')
        
@@ -243,15 +254,6 @@ function getMove(pokeData) {
                
                      getPokemon(ranNum);
                      getPokemonTwo(ranNumTwo);
-                     
-                   
-                   
-              
-                
-                  
-                   
-                 
-             
             
             }
             
@@ -259,7 +261,7 @@ function getMove(pokeData) {
         }, {once : true}) // End of Event Listener
         
     }
-    pokeButton();
+    pokeListeners();
     
             
           
