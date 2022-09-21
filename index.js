@@ -30,7 +30,7 @@
 async function getPokemonTwo(ranNumTwo) {
     
     let responseTwo = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNumTwo}`);
-let dataTwo = await responseTwo.json()
+    let dataTwo = await responseTwo.json()
    { pokeInfoTwo = dataTwo
   
     pokeDataTwo(pokeInfoTwo);
@@ -87,7 +87,7 @@ function getMove(pokeData) {
                   
                   createPokeCardTwo(pokeElementTwo);
 
-
+           
     }
     
     
@@ -110,52 +110,48 @@ function getMove(pokeData) {
 
     const main_types = Object.keys(colors);
    
+
+    
     function createPokeCardOne(pokeElement) {
-       
-       
+
+        const poke_container = document.getElementById('poke-trainer 1');
+        const pokemonEl = document.createElement('div');
+        pokemonEl.classList.add('pokemon');
         
+        const poke_types = pokeInfo.types.map(type => type.type.name);
+        const type = main_types.find(type => poke_types.indexOf(type) > -1);
+        const color = colors[type];
 
-    const poke_container = document.getElementById('poke-trainer 1');
-    const pokemonEl = document.createElement('div');
-    pokemonEl.classList.add('pokemon');
-    
-    const poke_types = pokeInfo.types.map(type => type.type.name);
-	const type = main_types.find(type => poke_types.indexOf(type) > -1);
-    const color = colors[type];
-
-    pokemonEl.style.backgroundColor = color;
-    
-    let pokeInnerHTML = `
-    <div class="card">
-    <div class="img-container">
-            <img src= ${pokeElement.image}
-						}.png"/>
-        </div>
-        <div class="info">
-             <h3 class="name">${pokeElement.name}</h3>
-             <h4 class="health">${pokeElement.health}</h4>
-             <h5 class="moves">${pokeElement.moves[0]}</h5>           
-             <h5 class="moves">${pokeElement.moves[1]}</h5>
-             <h5 class="moves">${pokeElement.moves[2]}</h5>
-             <h5 class="moves">${pokeElement.moves[3]}</h5>   
-
-                   
+        pokemonEl.style.backgroundColor = color;
+        
+        let pokeInnerHTML = `
+        <div class="card">
+        <div class="img-container">
+                <img src= ${pokeElement.image}
+                            }.png"/>
             </div>
-            </div>`
+            <div class="info">
+                <h3 class="name">${pokeElement.name}</h3>
+                <h4 class="health">${pokeElement.health}</h4>
+                <h5 class="moves">${pokeElement.moves[0]}</h5>           
+                <h5 class="moves">${pokeElement.moves[1]}</h5>
+                <h5 class="moves">${pokeElement.moves[2]}</h5>
+                <h5 class="moves">${pokeElement.moves[3]}</h5>   
 
-                 mouseEvent()
-       
+                    
+                </div>
+                </div>`;
+
+                        mouseEvent()
+                            
   
-    pokemonEl.innerHTML = pokeInnerHTML;
+        pokemonEl.innerHTML = pokeInnerHTML;
 
-    poke_container.appendChild(pokemonEl)
-    
+        poke_container.appendChild(pokemonEl)
+        
      }
 
-    function createPokeCardTwo(pokeElementTwo) {
-         
-       
-        
+    function createPokeCardTwo(pokeElementTwo) {  
 
         const poke_container = document.getElementById('poke-trainer 2');
         const pokemonEl = document.createElement('div');
@@ -183,40 +179,40 @@ function getMove(pokeData) {
     
                        
                 </div>
-                </div>`
-               
-                          
-                            
-                            
-            
-                    mouseEvent()
-                   
-        
+                </div>`;                         
+                mouseEvent()
+                
        
         pokemonEl.innerHTML = pokeInnerHTML;
     
         poke_container.appendChild(pokemonEl)
        
         
-         }
-
+         };
+         let mouseEventCounter = 0;
      function mouseEvent() {
-       
-        let pokeCard = document.getElementsByClassName('card') 
-      
-       for (let i = 0; i < pokeCard.length; i++) {
-            pokeCard[i].addEventListener('mouseover', () =>  {
+        const pokeCard =  document.querySelectorAll('.card');
+        // let pokeCard =  document.getElementsByClassName('card')
+      console.log(pokeCard)
+    //    for (let i = 0; i < pokeCard.length; i++) {
+            //    if(i = mouseEventCounter) {
+                // console.log('if state working')}
+                    pokeCard.forEach(card => {
+                        card.addEventListener('mouseover', () =>  {
            
-               pokeScale(i);   
-            });
-           
-            pokeCard[i].addEventListener('mouseout', () =>  {
+                            card.style.transform = 'scale(1.10)';
+                     })
+                        card.addEventListener('mouseout', () =>  {
                 
-                   pokeNormal(i);
-            });
+                            card.style.transform = 'scale(1.05)';
+                    });
+                })   // end of forEach 
+           
+          
+           
    
-        }
-    };
+        // }  //end of for loop
+    };      
     
     function pokeScale(cardId) {
         let pokeCard = document.getElementsByClassName('card') 
@@ -236,7 +232,7 @@ function getMove(pokeData) {
 
     
 
-    function pokeListeners() {
+    function pokeButton() {
        
         const list =  document.querySelector('#btn')
        
@@ -246,7 +242,7 @@ function getMove(pokeData) {
             //let maxPokemon = 3;  // Needs to be an array
            
             for (i = 0; i < 3; i++) {
-                
+                    mouseEventCounter = i;
                     ranNum = Math.floor(Math.random() * 151);
                     ranNumTwo = Math.floor(Math.random() * 151)
                     console.log(ranNum)
@@ -257,46 +253,7 @@ function getMove(pokeData) {
             
             }
             
-            //pokeCard()
         }, {once : true}) // End of Event Listener
         
     }
-    pokeListeners();
-    
-            
-          
-            
-        
-       
-    
-    
-
-
-
-
-
-// function darkMode() {
-//     const darkLight = document.querySelector('#darkmode')
-//     darkLight.classList.toggle("dark-mode").addEventListener('click')
-//}
-
-
- 
-
-
-
-
-// CSS for dark mode 
-// body {
-//     padding: 25px;
-//     background-color: white;
-//     color: black;
-//     font-size: 25px;
-//   }
-  
-//   .dark-mode {
-//     background-color: black;
-//     color: white;
-//   }
-
-
+    pokeButton();
