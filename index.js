@@ -196,7 +196,7 @@ function getMove(pokeData) {
        
         //  let mouseEventCounter = 0;
      function mouseEvent() {
-        const pokeCard =  document.querySelectorAll('.card');
+        const pokeCard =  document.querySelectorAll('.pokemon');
         
 
     //    for (let i = 0; i < pokeCard.length; i++) {
@@ -205,11 +205,11 @@ function getMove(pokeData) {
                     pokeCard.forEach(card => {
                         card.addEventListener('mouseover', () =>  {
            
-                            card.style.transform = 'scale(1.10)';
+                            card.style.transform = 'scale(1.05)';
                      })
                         card.addEventListener('mouseout', () =>  {
                 
-                            card.style.transform = 'scale(1.05)';
+                            card.style.transform = 'scale(1.00)';
                     });
                 });  // end of forEach 
            
