@@ -1,49 +1,53 @@
 //Banner that pops up on page load that has a question Y/N 
 //"Do you have what it takes to be a pokemon master?!"
 
-//adds alert box on page load.
+//adds alert box on page load. Needs to be async for page to load first or use setTimeout? 
 // document.addEventListener('DOMContentLoaded', () => {
     
-//    alert('A Pokémon trainer has challenged you to a battle!!')
+//    alert('A Pokémon trainer has challenged you to a battle! Quick get your Pokémon and battle')
 //     }); 
 
 
 
 
 
- async function getPokemon(ranNum) {
+ async function getPokemon(ranNum, ranNumTwo) {
    
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`);
     let data = await response.json()
-       { pokeInfo = data
+    
+       pokeInfo = data
+        //console.log(pokeInfo)
+        pokeData(pokeInfo)
         
-        pokeData(pokeInfo);
+        let responseTwo = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNumTwo}`);
+        let dataTwo = await responseTwo.json()
+        
+       pokeInfoTwo = dataTwo
+        //console.log(pokeInfoTwo)
+        pokeDataTwo(pokeInfoTwo);
     
-    
-    }
-
    
     try {(error => console.log(error))}
-    catch {(console.log('Error!'))}
+    catch {(error => console.log(error))}
 };
 
-async function getPokemonTwo(ranNumTwo) {
+// async function getPokemonTwo(ranNumTwo) { dead code. not needed to run program
     
-    let responseTwo = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNumTwo}`);
-    let dataTwo = await responseTwo.json()
-   { pokeInfoTwo = dataTwo
-  
-    pokeDataTwo(pokeInfoTwo);
+//     let responseTwo = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNumTwo}`);
+//     let dataTwo = await responseTwo.json()
     
+//    pokeInfoTwo = dataTwo
+//     console.log(pokeInfoTwo)
+//     pokeDataTwo(pokeInfoTwo);
 
-}
-    try {(error => console.log(error))}
-    catch {(console.log('Error!'))}
+//     try {(error => console.log(error))}
+//     catch {(error => console.log(error))}
 
-}
+// };
+
 function getMove(pokeData) {
     ranMove = Math.floor(Math.random() * pokeData.moves.length)
-        //console.log(ranMove, "this is the random moves")
             return ranMove;
             
 };
@@ -63,7 +67,7 @@ function getMove(pokeData) {
            
            };
           
-       
+                    
                   createPokeCardOne(pokeElement);
                 
 
@@ -189,11 +193,12 @@ function getMove(pokeData) {
        
         
          };
-         let mouseEventCounter = 0;
+       
+        //  let mouseEventCounter = 0;
      function mouseEvent() {
         const pokeCard =  document.querySelectorAll('.card');
-        // let pokeCard =  document.getElementsByClassName('card')
-      console.log(pokeCard)
+        
+
     //    for (let i = 0; i < pokeCard.length; i++) {
             //    if(i = mouseEventCounter) {
                 // console.log('if state working')}
@@ -206,7 +211,7 @@ function getMove(pokeData) {
                 
                             card.style.transform = 'scale(1.05)';
                     });
-                })   // end of forEach 
+                });  // end of forEach 
            
           
            
@@ -214,21 +219,25 @@ function getMove(pokeData) {
         // }  //end of for loop
     };      
     
-    function pokeScale(cardId) {
-        let pokeCard = document.getElementsByClassName('card') 
-       
-        pokeCard[cardId].style.transform = 'scale(1.10)';
+    // function pokeScale(cardId) {
+    //     let pokeCard = document.getElementsByClassName('card') 
+        
+    //     pokeCard[cardId].style.transform = 'scale(1.10)';
             
-    }
+    // };
     
-    function pokeNormal(cardId) {
-        let pokeCard = document.getElementsByClassName('card') 
-       
-        pokeCard[cardId].style.transform = 'scale(1.05)';
+    // function pokeNormal(cardId) {
+    //     let pokeCard = document.getElementsByClassName('card') 
+        
+    //     pokeCard[cardId].style.transform = 'scale(1.05)';
             
-    }
+    // };
     
+    function grabCard() {
+        //add event listeners to drag and drop pokemon cards to the "battle container"
+        // where they fight.
 
+    }
 
     
 
@@ -241,19 +250,20 @@ function getMove(pokeData) {
           
             //let maxPokemon = 3;  // Needs to be an array
            
-            for (i = 0; i < 3; i++) {
-                    mouseEventCounter = i;
-                    ranNum = Math.floor(Math.random() * 151);
-                    ranNumTwo = Math.floor(Math.random() * 151)
+            for (i = 0; i < 6; i++) {
+                    //mouseEventCounter = i;
+                    ranNum = Math.floor(Math.random() * 151) // get request fails when number is 0
+                    ranNumTwo = Math.floor(Math.random() * 151) // get request fails when number is 0
                     console.log(ranNum)
                     console.log(ranNumTwo)
                
-                     getPokemon(ranNum);
-                     getPokemonTwo(ranNumTwo);
-            
+                     getPokemon(ranNum, ranNumTwo);  
+                    //  getPokemonTwo(ranNumTwo);
+
             }
             
         }, {once : true}) // End of Event Listener
         
-    }
+    };
     pokeButton();
+    // , {once : true}
