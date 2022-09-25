@@ -17,7 +17,7 @@
     let data = await response.json()
     
        pokeInfo = data
-        //console.log(pokeInfo)
+        // console.log(pokeInfo)
         pokeData(pokeInfo)
         
         let responseTwo = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNumTwo}`);
@@ -56,6 +56,7 @@ function getMove(pokeData) {
     function pokeData(pokeInfo) {
         const pokeElement = 
         {
+           id: pokeInfo.id,
            image: pokeInfo.sprites.front_default,
            name: pokeInfo.name.toUpperCase(),
            health: `HP: ${pokeInfo.stats[0].base_stat}`,
@@ -66,7 +67,7 @@ function getMove(pokeData) {
            pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase()],
            
            };
-          
+          console.log(pokeElement.id)
                     
                   createPokeCardOne(pokeElement);
                 
@@ -77,6 +78,7 @@ function getMove(pokeData) {
     function pokeDataTwo(pokeInfoTwo) {
          const pokeElementTwo = 
         {
+           id: pokeInfoTwo.id,
            image: pokeInfoTwo.sprites.front_default,
            name: pokeInfoTwo.name.toUpperCase(),
            health: `HP: ${pokeInfoTwo.stats[0].base_stat}`,
@@ -87,7 +89,7 @@ function getMove(pokeData) {
            pokeInfoTwo.moves[getMove(pokeInfoTwo)].move.name.toUpperCase()],
            
            };
-           
+           console.log(pokeElementTwo.id)
                   
                   createPokeCardTwo(pokeElementTwo);
 
@@ -121,6 +123,7 @@ function getMove(pokeData) {
         const poke_container = document.getElementById('poke-trainer 1');
         const pokemonEl = document.createElement('div');
         pokemonEl.classList.add('pokemon');
+        pokemonEl.setAttribute('id',  `${pokeElement.id}`);
         pokemonEl.setAttribute('draggable', true)
         
         const poke_types = pokeInfo.types.map(type => type.type.name);
@@ -161,6 +164,7 @@ function getMove(pokeData) {
         const poke_container = document.getElementById('poke-trainer 2');
         const pokemonEl = document.createElement('div');
         pokemonEl.classList.add('pokemon');
+        pokemonEl.setAttribute('id', `${pokeElementTwo.id}`)
         pokemonEl.setAttribute('draggable', true)
        
         const poke_types = pokeInfoTwo.types.map(type => type.type.name);
@@ -196,14 +200,12 @@ function getMove(pokeData) {
         
          };
        
-        //  let mouseEventCounter = 0;
+      
      function mouseEvent() {
         const pokeCard =  document.querySelectorAll('.pokemon');
         
 
-    //    for (let i = 0; i < pokeCard.length; i++) {
-            //    if(i = mouseEventCounter) {
-                // console.log('if state working')}
+    
                     pokeCard.forEach(card => {
                         card.addEventListener('mouseover', () =>  {
            
@@ -214,47 +216,34 @@ function getMove(pokeData) {
                             card.style.transform = 'scale(1.00)';
                     });
                 });  // end of forEach 
-           
-          
-           
-   
-        // }  //end of for loop
     };      
     
-    // function pokeScale(cardId) {
-    //     let pokeCard = document.getElementsByClassName('card') 
-        
-    //     pokeCard[cardId].style.transform = 'scale(1.10)';
-            
-    // };
-    
-    // function pokeNormal(cardId) {
-    //     let pokeCard = document.getElementsByClassName('card') 
-        
-    //     pokeCard[cardId].style.transform = 'scale(1.05)';
-            
-    // };
-    
-    function grabCard() {
-        //add event listeners to drag and drop pokemon cards to the "battle container"
-        // where they fight.
+    function grabCard(pokeElement, pokeElementTwo) {
             const draggable = document.querySelectorAll('.pokemon')
             const container = document.querySelectorAll('.container')
-
+            // console.log(draggable)
             draggable.forEach(draggable => {
                 draggable.addEventListener('dragstart', () => {
+                    draggable.classList.add('dragging')
                     console.log('drag start')
                 })
+                draggable.addEventListener('dragend', () => {
+                    draggable.classList.remove('dragging')
+                  })
             })
 
             container.forEach(container => {
                 container.addEventListener('dragover', e => {
                     e.preventDefault()
                     console.log('drag over')
-                    const draggable = document.querySelector('.pokemon')
+                    const draggable = document.querySelector('.dragging')
+                    
                     container.appendChild(draggable)
+                   
                 })
+                
             })
+            
     }
 
     
@@ -266,14 +255,14 @@ function getMove(pokeData) {
        
         list.addEventListener('click',   () =>  { 
           
-            //let maxPokemon = 3;  // Needs to be an array
+            
            
-            for (i = 0; i < 1; i++) {
+            for (i = 0; i < 6; i++) {
                     //mouseEventCounter = i;
                     ranNum = Math.floor(Math.random() * 151) // get request fails when number is 0
                     ranNumTwo = Math.floor(Math.random() * 151) // get request fails when number is 0
-                    console.log(ranNum)
-                    console.log(ranNumTwo)
+                    // console.log(ranNum)
+                    // console.log(ranNumTwo)
                
                      getPokemon(ranNum, ranNumTwo);  
                     //  getPokemonTwo(ranNumTwo);
@@ -284,4 +273,4 @@ function getMove(pokeData) {
         
     };
     pokeButton();
-    // , {once : true}
+   
