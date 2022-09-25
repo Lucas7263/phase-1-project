@@ -218,7 +218,7 @@ function getMove(pokeData) {
                 });  // end of forEach 
     };      
     
-    function grabCard(pokeElement, pokeElementTwo) {
+    function grabCard() {
             const draggable = document.querySelectorAll('.pokemon')
             const container = document.querySelectorAll('.container')
             // console.log(draggable)
@@ -246,27 +246,20 @@ function getMove(pokeData) {
             
     }
 
-    
+    function getRandomNum(min, max) {
+        return Math.floor(Math.random() * max - min + 1) + min
+         
+    }
 
     function pokeButton() {
-       
         const list =  document.querySelector('#btn')
-       
-       
+        
         list.addEventListener('click',   () =>  { 
           
-            
-           
-            for (i = 0; i < 6; i++) {
-                    //mouseEventCounter = i;
-                    ranNum = Math.floor(Math.random() * 151) // get request fails when number is 0
-                    ranNumTwo = Math.floor(Math.random() * 151) // get request fails when number is 0
-                    // console.log(ranNum)
-                    // console.log(ranNumTwo)
-               
-                     getPokemon(ranNum, ranNumTwo);  
-                    //  getPokemonTwo(ranNumTwo);
-
+        for (i = 0; i < 6; i++) {
+             ranNum =  getRandomNum(1, 151)
+             ranNumTwo = getRandomNum(1, 151) 
+             getPokemon(ranNum, ranNumTwo);   
             }
             
         }, {once : true}) // End of Event Listener
