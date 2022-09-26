@@ -255,7 +255,14 @@ function getMove(pokeData) {
             ranNum = getRandomNum(1, 2)
             console.log(ranNum)
             if (ranNum === 1 ){
-                fighterTwo.remove()
+                console.log('the result was 1')
+                console.log(fighterTwo[0])
+                fighterTwo[0].remove()
+                
+            } else if (ranNum === 2) {
+                console.log('the result was 2')
+                console.log(fighterOne[0])
+                fighterOne[0].remove()
             }
             console.log('I was clicked');
 
