@@ -21,22 +21,46 @@ body {
 	align-items: center;
 	justify-content: center;
 	background-color: #333;
+	height: 570px;
+	width: 570px;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
 
-.container-2 {
+.container .poke-battle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: fixed;
+	top: 0%;
+	
+	
+}
+
+h3 {
+	display: flex;
+	flex-direction: column;
+	color:  red;
+	opacity: 0.5;
+}
+
+/* .container-2 {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	/* margin-left: auto; 
-	margin-right: right; */
+	background-color: #333;
+	height: 500.44px;
+	width: 500.44px;
+	position: fixed;
+	top: 50%;
+	right: 35%;
+	transform: translate(-50%, -50%);
 	
-}
+} */
 
  .pokemon  {
   	display: flex;

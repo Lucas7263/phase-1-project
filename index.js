@@ -1,17 +1,4 @@
-//Banner that pops up on page load that has a question Y/N 
-//"Do you have what it takes to be a pokemon master?!"
-
-//adds alert box on page load. Needs to be async for page to load first or use setTimeout? 
-// document.addEventListener('DOMContentLoaded', () => {
-    
-//    alert('A Pokémon trainer has challenged you to a battle! Quick get your Pokémon and battle')
-//     }); 
-
-
-
-
-
- async function getPokemon(ranNum, ranNumTwo) {
+async function getPokemon(ranNum, ranNumTwo) {
    
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${ranNum}`);
     let data = await response.json()
@@ -49,7 +36,6 @@
 function getMove(pokeData) {
     ranMove = Math.floor(Math.random() * pokeData.moves.length)
             return ranMove;
-            
 };
 
 
@@ -67,13 +53,8 @@ function getMove(pokeData) {
            pokeInfo.moves[getMove(pokeInfo)].move.name.toUpperCase()],
            
            };
-          console.log(pokeElement.id)
-                    
-                  createPokeCardOne(pokeElement);
-                
-
-
-    }
+           createPokeCardOne(pokeElement);
+};
 
     function pokeDataTwo(pokeInfoTwo) {
          const pokeElementTwo = 
@@ -89,12 +70,8 @@ function getMove(pokeData) {
            pokeInfoTwo.moves[getMove(pokeInfoTwo)].move.name.toUpperCase()],
            
            };
-           console.log(pokeElementTwo.id)
-                  
-                  createPokeCardTwo(pokeElementTwo);
-
-           
-    }
+           createPokeCardTwo(pokeElementTwo);
+};
     
     
     const colors = {
@@ -123,6 +100,7 @@ function getMove(pokeData) {
         const poke_container = document.getElementById('poke-trainer 1');
         const pokemonEl = document.createElement('div');
         pokemonEl.classList.add('pokemon');
+        pokemonEl.classList.add('trainer-1');
         pokemonEl.setAttribute('id',  `${pokeElement.id}`);
         pokemonEl.setAttribute('draggable', true)
         
@@ -134,21 +112,19 @@ function getMove(pokeData) {
         
         let pokeInnerHTML = `
         <div class="card">
-        <div class="img-container">
+             <div class="img-container">
                 <img src= ${pokeElement.image}
                             }.png"/>
-            </div>
+             </div>
             <div class="info">
-                <h3 class="name">${pokeElement.name}</h3>
+                <h2 class="name">${pokeElement.name}</h2>
                 <h4 class="health">${pokeElement.health}</h4>
                 <h5 class="moves">${pokeElement.moves[0]}</h5>           
                 <h5 class="moves">${pokeElement.moves[1]}</h5>
                 <h5 class="moves">${pokeElement.moves[2]}</h5>
                 <h5 class="moves">${pokeElement.moves[3]}</h5>   
-
-                    
-                </div>
-                </div>`;
+            </div>
+        </div>`;
                 mouseEvent()
                 grabCard()                 
                         
@@ -156,14 +132,14 @@ function getMove(pokeData) {
         pokemonEl.innerHTML = pokeInnerHTML;
 
         poke_container.appendChild(pokemonEl)
-        
-     }
+    };
 
     function createPokeCardTwo(pokeElementTwo) {  
 
         const poke_container = document.getElementById('poke-trainer 2');
         const pokemonEl = document.createElement('div');
         pokemonEl.classList.add('pokemon');
+        pokemonEl.classList.add('trainer-2');
         pokemonEl.setAttribute('id', `${pokeElementTwo.id}`)
         pokemonEl.setAttribute('draggable', true)
        
@@ -175,30 +151,26 @@ function getMove(pokeData) {
         
         let pokeInnerHTML = `
         <div class="card">
-        <div class="img-container">
+             <div class="img-container">
                 <img src= ${pokeElementTwo.image}
                             }.png"/>
-            </div>
+             </div>
             <div class="info">
-                 <h3 class="name">${pokeElementTwo.name}</h3>
+                 <h2 class="name">${pokeElementTwo.name}</h2>
                  <h4 class="health">${pokeElementTwo.health}</h4>
                  <h5 class="moves">${pokeElementTwo.moves[0]}</h5>           
                  <h5 class="moves">${pokeElementTwo.moves[1]}</h5>
                  <h5 class="moves">${pokeElementTwo.moves[2]}</h5>
                  <h5 class="moves">${pokeElementTwo.moves[3]}</h5>   
-    
-                       
-                </div>
-                </div>`;                         
+            </div>
+        </div>`;                         
                 mouseEvent()
                 grabCard()
        
         pokemonEl.innerHTML = pokeInnerHTML;
     
         poke_container.appendChild(pokemonEl)
-       
-        
-         };
+    };
        
       
      function mouseEvent() {
@@ -210,7 +182,7 @@ function getMove(pokeData) {
                         card.addEventListener('mouseover', () =>  {
            
                             card.style.transform = 'scale(1.05)';
-                     })
+                     });
                         card.addEventListener('mouseout', () =>  {
                 
                             card.style.transform = 'scale(1.00)';
@@ -220,43 +192,47 @@ function getMove(pokeData) {
     
     function grabCard() {
             const draggable = document.querySelectorAll('.pokemon')
+            
             const container = document.querySelectorAll('.container')
-            // console.log(draggable)
+           
             draggable.forEach(draggable => {
                 draggable.addEventListener('dragstart', () => {
                     draggable.classList.add('dragging')
+                    
                     console.log('drag start')
-                })
+                });
                 draggable.addEventListener('dragend', () => {
-                    draggable.classList.remove('dragging')
-                  })
-            })
+                    draggable.classList.remove('dragging');
+                    draggable.classList.add('fight-list');
+                    
+                  });
+            });
 
             container.forEach(container => {
                 container.addEventListener('dragover', e => {
                     e.preventDefault()
+                    
                     console.log('drag over')
                     const draggable = document.querySelector('.dragging')
                     
                     container.appendChild(draggable)
                    
-                })
+                });
                 
-            })
+            });
             
-    }
+    };
 
     function getRandomNum(min, max) {
-        return Math.floor(Math.random() * max - min + 1) + min
-         
-    }
+        return Math.floor(Math.random() * max - min + 1) + min  
+    };
 
     function pokeButton() {
         const list =  document.querySelector('#btn')
         
         list.addEventListener('click',   () =>  { 
           
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 2; i++) {
              ranNum =  getRandomNum(1, 151)
              ranNumTwo = getRandomNum(1, 151) 
              getPokemon(ranNum, ranNumTwo);   
@@ -266,4 +242,24 @@ function getMove(pokeData) {
         
     };
     pokeButton();
+
+    function fightButton() {
+        const fight =  document.querySelector('#btn2');
+        
+        fight.addEventListener('click',   () =>  {
+            const fighterOne = document.getElementsByClassName('pokemon trainer-1 fight-list')
+            const fighterTwo = document.getElementsByClassName('pokemon trainer-2 fight-list')
+            console.log(fighterOne)
+            console.log(fighterTwo)
+             
+            ranNum = getRandomNum(1, 2)
+            console.log(ranNum)
+            if (ranNum === 1 ){
+                fighterTwo.remove()
+            }
+            console.log('I was clicked');
+
+    }) //end of eventlistener
+};
+fightButton();
    
